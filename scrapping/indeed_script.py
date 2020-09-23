@@ -42,8 +42,8 @@ def generate_number_delay(mean = 4, sigma = 0.8):
 
 # dictionnaire: en clé, le nom de la colonne de la dataframe, en valeurn leur xpath, class ou selecteur css sur le site internet
 
-d_xpath = {'Job Title':'.//h1[contains(@class,"JobInfoHeader")]',  
-       'Name Company':'.//div[contains(@class,"icl-u-lg-mr--sm icl-u-xs-mr--xs")]', 
+d_xpath = {'Title':'.//h1[contains(@class,"JobInfoHeader")]',  
+       'Company':'.//div[contains(@class,"icl-u-lg-mr--sm icl-u-xs-mr--xs")]', 
        'Location':'//div[contains(@class,"jobsearch-InlineCompanyRating")]/div[4]', 
        'Descriptions': '//*[@id="jobDescriptionText"]', 
 
@@ -80,8 +80,8 @@ def returninfojob(d):
     """
     Retourne un dictionnaire contenant toute les informations nécessaires pour les offres d'emploi
     """
-    d = update_dic(d_xpath,'Job Title', d)
-    d = update_dic(d_xpath,'Name Company', d)
+    d = update_dic(d_xpath,'Title', d)
+    d = update_dic(d_xpath,'Company', d)
     d = update_dic(d_xpath,'Location', d)
     d = update_dic(d_xpath,'Descriptions', d)
     return d
@@ -113,9 +113,9 @@ name_csv = 'indeed_df.csv'
 try:
     df_indeed = pd.read_json(name_csv)
 except:
-    df_indeed = pd.DataFrame(columns=['Job Title', 'Name Company','Location','Descriptions'])
+    df_indeed = pd.DataFrame(columns=['Title', 'Company','Location','Descriptions'])
     """
-    df_indeed = {'Job Title': [], 'Name Company': [], 'Location': [], 'Links': [], 'Review': [], 'Salary': [], 'Descriptions': [],
+    df_indeed = {'Title': [], 'Company': [], 'Location': [], 'Links': [], 'Review': [], 'Salary': [], 'Descriptions': [],
                'Python': [], 'R': [], 'SQL': [], 'NoSQL': [], 'GIT': [], 'Spark': [], 'Flask': [], 'Streamlit': [], 'Docker': [], 'Kubernetes': [],
                'React': [], 'VueJS': [], 'AngularJS': [],
                'Machine Learning': [], 'Deep Learning': [], 'NLP': [],  'Scala': [], 'PySpark': [],
