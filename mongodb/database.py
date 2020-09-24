@@ -38,7 +38,7 @@ if client != None:
     print ("database_names() TYPE:", type(database_names))
     print ("The client's list_database_names() method returned", len(database_names), "database names.")
 
-    if "indeed_db" in database_names:
+    if "job_applications" in database_names:
         print("The database exists.")
     else:
         db = client.indeed_db
@@ -46,10 +46,10 @@ if client != None:
     
     collection_names = db.list_collection_names()
 
-    if "coljob" in collection_names:
+    if "Indeed" in collection_names:
         print("The collection exists.")
     else:
-        coljob = db.coljob
+        Indeed = db.Indeed
         print('The collection is created.')
 
 json_file = '../data/Indeed_file.json'

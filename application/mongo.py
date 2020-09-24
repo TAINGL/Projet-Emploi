@@ -20,16 +20,19 @@ mongo = PyMongo(app)
 job_collection = mongo.db.Indeed
 
 class SearchForm(FlaskForm):
+    name = StringField('Name')
+    email = StringField('Email')
     query = StringField('What Skills do you have?')
     city = StringField('Where?')
     company = StringField('Which company?')
     submit = SubmitField('Submit')
 
 @app.route("/")
-@app.route("/search", methods=['GET', 'POST'])    
+@app.route("/search", methods=['GET','POST'])
 def index():
     form = SearchForm()
     if request.method == "POST" and form.validate_on_submit():
+        print('post')
         keywords = form.query.data if hasattr(form.query, 'data') else ""
         city = form.query.city if hasattr(form.query, 'city') else ""
         company = form.query.company if hasattr(form.query, 'company') else ""
@@ -38,6 +41,7 @@ def index():
 
 @app.route("/result")    
 def get_offers():
+    print('ok')
     job_collection = mongo.db.Indeed
 
     keywords = request.args.get("keywords")
