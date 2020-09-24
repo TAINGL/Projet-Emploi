@@ -31,6 +31,7 @@ def connect_mongo():
 @app.route('/', methods=['GET', 'POST'])
 def home_page():
     key=request.values.get("key")
+    key=request.values.get("key")
     refer=request.values.get("refer")
     refer_plus=request.values.get("refer_plus")
     
@@ -47,10 +48,9 @@ def home_page():
                           refer_plus: { "$regex": key} })
 	else:
         mydoc = col.find({refer:key})
-
     for x in mydoc:
         print(x)     
-    return render_template('index.html', home_page=mydoc)
+    return render_template('index.html')
 
 @app.route('/results', methods=['GET', 'POST'])
 def get_results():

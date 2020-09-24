@@ -86,6 +86,14 @@ https://colorlib.com/wp/free-html5-contact-form-templates/
 https://colorlib.com/wp/template/responsive-table-v1/
 https://colorlib.com/wp/template/careers/
 
+Utiliser Insomnia pour tester les requêtes:
+Exemple de requêtes: avec "q" correspondant à une query et "s" correspondant au sort (asc ou desc).
+```
+{ "q": { "Title": { "$regex": "data"} },
+ "s":"desc"
+}
+```
+
 ## Partie 3 - Automatisation (par mail, via télégram)
 
 Une notification est envoyé par email.

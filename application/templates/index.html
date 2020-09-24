@@ -51,11 +51,9 @@
 					<span class="label-input100">What Skills do you have?</span>
 					<div>
 						<select class="selection-2" name="service">
-							<form method="POST">
-								<input type="text" name="skills">
-								{{ col["skills"] }}
+							<form action="{{ url_for('search') }}" method="POST" role="form">
+								<input type="text" name="skills_job">
 							</form>
-							
 						</select>
 					</div>
 					<span class="focus-input100"></span>
