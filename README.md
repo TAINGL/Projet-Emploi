@@ -82,9 +82,9 @@ A l'aide de l'application Flask, l'utilisateur pourra faire ces recherches pour 
  - titre
 
 Le template du site web provient du site: 
-https://colorlib.com/wp/free-html5-contact-form-templates/
-https://colorlib.com/wp/template/responsive-table-v1/
-https://colorlib.com/wp/template/careers/
+- https://colorlib.com/wp/free-html5-contact-form-templates/
+- https://colorlib.com/wp/template/responsive-table-v1/
+- https://colorlib.com/wp/template/careers/
 
 Utiliser Insomnia pour tester les requêtes:
 Exemple de requêtes: avec "q" correspondant à une query et "s" correspondant au sort (asc ou desc).
