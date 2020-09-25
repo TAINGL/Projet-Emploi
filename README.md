@@ -102,13 +102,17 @@ Exemple de requêtes: avec "q" correspondant à une query et "s" correspondant a
 
 Sur mongo.py
 ```
-localhost:5000/search
+python3 mongo.py
 ```
+
+http://127.0.0.1:5000/
+
 
 ## Partie 3 - Automatisation (par mail, via télégram)
 
 Une notification est envoyé par email.
 
+### To Do
 - [ ] Fonctionnement des requêtes depuis la page de recherche liée à la page de résultat
 - [ ] Maintenance de la base de donnée selon la mise à jour (doublon)
 - [ ] Alerte par email
