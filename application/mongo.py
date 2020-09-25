@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 app.config['MONGO_DBNAME'] = 'Indeed'
 app.config['MONGO_URI'] = 'mongodb://localhost:27017/job_applications'
-app.config["SECRET_KEY"] = '296e3a31e0fe30ddf14efa247e70b56b' # python :> import secrets > secrets.token_hek(16)
+app.config["SECRET_KEY"] = 'VOTRE TOKEN'
 
 mongo = PyMongo(app)
 job_collection = mongo.db.Indeed
@@ -37,7 +37,7 @@ def index():
         city = form.query.city if hasattr(form.query, 'city') else ""
         company = form.query.company if hasattr(form.query, 'company') else ""
         return redirect(url_for('get_offers', keywords=keywords, city=city, company=company))
-    return render_template('index.html', form=form)
+    return render_template('home.html', form=form)
 
 @app.route("/result")    
 def get_offers():
@@ -63,7 +63,7 @@ def get_offers():
 
 
     results = job_collection.find(myquery)
-    return render_template('offer.html', results=results)
+    return render_template('result.html', results=results)
 
 if __name__ == '__main__':
     app.run(debug=True)

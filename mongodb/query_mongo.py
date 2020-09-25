@@ -3,10 +3,10 @@ from pymongo import MongoClient
 
 # connect to database
 connection = MongoClient('localhost', 27017)
-db = connection.indeed_db
+db = connection.job_applications
 
 # handle to movies collection
-jobcard = db.coljob
+jobcard = db.Indeed
 
 # find all
 myquery_1 = { "Title": { "$regex": "data"} }

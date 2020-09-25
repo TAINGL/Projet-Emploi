@@ -39,14 +39,9 @@ mm hh jj MMM JJJ [user] tâche > log
 
 Donc ici:
 ```
-00 09 * * * /app.py
+00 09 * * * /nane of your app.py
 ```
-
-## Usage
-
-```python
-
-```
+https://help.dreamhost.com/hc/en-us/articles/215767047-Creating-a-custom-Cron-Job
 
 ## Partie 1 - Scrapping (Selenium) sur Indeed
 
@@ -58,11 +53,14 @@ Voici la liste des informations a récupéré :
     - le type de contrat
     - liste des thématiques/technologies
 
-Homogénéisation des données: 
+Homogénéisation des données: Récupération des mots clés pour faire la liste des skills par annonce et format json pour l'importation du dataset sur MongoDB.
+
+Une fois les données collectées par scrapping - il faut créer une catégorie compétence 'skills' à l'aide de la description du poste.
+Puis mettre la data sous le format json afin de pouvoir l'importer dans mongoDB.
 
 ## Partie 2 - Base de données (MongoDB)
-
 La base de donnée est en MongoDB.
+Le nom de la base de donnée est job_application et la collection est Indeed.
 Pour faire la connexion avec Flask, il y a plusieurs possibilités.
 Vous pouvez utiliser l'une de ces trois bibliothèques
 
@@ -70,9 +68,11 @@ Vous pouvez utiliser l'une de ces trois bibliothèques
     Flask-MongoAlchemy - https://pythonhosted.org/Flask-MongoAlchemy/
     Flask-MongoEngine - http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/
 
-Personnellement, j'ai utilisé Flask-PyMongo.
+Ici, j'ai utilisé Flask-PyMongo.
 
-
+```bash
+pip install Flask-PyMongo
+```
 
 ## Partie 3 - Application (Flask)
 
@@ -82,10 +82,16 @@ A l'aide de l'application Flask, l'utilisateur pourra faire ces recherches pour 
  - titre
 
 Le template du site web provient du site: 
-- https://colorlib.com/wp/free-html5-contact-form-templates/
+- https://colorlib.com/wp/template/contact-form-v4/
 - https://colorlib.com/wp/template/responsive-table-v1/
-- https://colorlib.com/wp/template/careers/
 
+pour app.config["SECRET_KEY"] du fichier mongo.py, aller sur le terminal pour créer une suite de chiffre-lettre aléatoire pour le token:
+```python
+import secrets
+secrets.token_hek(16)
+```
+
+Sur app.py
 Utiliser Insomnia pour tester les requêtes:
 Exemple de requêtes: avec "q" correspondant à une query et "s" correspondant au sort (asc ou desc).
 ```
@@ -94,6 +100,18 @@ Exemple de requêtes: avec "q" correspondant à une query et "s" correspondant a
 }
 ```
 
+Sur mongo.py
+```
+localhost:5000/search
+```
+
 ## Partie 3 - Automatisation (par mail, via télégram)
 
 Une notification est envoyé par email.
+
+- [ ] Fonctionnement des requêtes depuis la page de recherche liée à la page de résultat
+- [ ] Maintenance de la base de donnée selon la mise à jour (doublon)
+- [ ] Alerte par email
+- [ ] Completer le dataset avec une deuxième source d'annonce de recherche d'emploi (type Monster)
+- [ ] Affiner les champs de recherche, moteur de recherche, mot clé (pour la recherche/requête sur la base de donnée)
+- [ ] Packager 
